@@ -22,25 +22,7 @@ void Game::runGame()
 	while (!exit)
 	{
 		system("cls");
-		for (auto thing : this->gameBoard.getBoard())
-		{
-			for (auto foo : thing)
-			{
-				switch (foo)
-				{
-				case Pebbles::Black:
-					std::cout << "B";
-					break;
-				case Pebbles::White:
-					std::cout << "W";
-					break;
-				default:
-					std::cout << "*";
-					break;
-				}
-			}
-			std::cout << std::endl;
-		}
+		std::cout << this->gameBoard.getDisplayableBoard();
 		performTurn();
 	}
 }
