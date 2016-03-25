@@ -30,10 +30,11 @@ void Game::runGame()
 void Game::performTurn()
 {
 	top:
-	Pebbles peb = this->blacksTurn ? Pebbles::Black : Pebbles::White;
+	Pebble peb = this->blacksTurn ? Pebble(PebbleType::Black) : Pebble(PebbleType::White);
 	std::cout << "Enter Coordinate(ex: 2 3): ";
 	int x, y;
 	std::cin >> x >> y;
+
 	if (this->gameBoard.setPebbleAt(peb, x, y))
 		std::cout << "Next player's turn...\n";
 	else {
