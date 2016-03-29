@@ -1,5 +1,5 @@
 #pragma once
 #include <iostream>
-#include <conio.h>
+//#include <conio.h> TODO: do some stuff to make it multiplatform
 #include <vector>
 #include <string>

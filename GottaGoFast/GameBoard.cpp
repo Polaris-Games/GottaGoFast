@@ -40,6 +40,7 @@ bool GameBoard::setPebbleAt(Pebble pebble, unsigned int x, unsigned int y)
 std::string GameBoard::getDisplayableBoard()
 {
 	std::string theBoard = "";
+	//std::ostringstream oss;
 	/*
 	for (auto row : this->board)
 	{
@@ -62,21 +63,25 @@ std::string GameBoard::getDisplayableBoard()
 		theBoard += "\n";
 	}
 	/*/
-	for (int i = -1; i < this->board.size(); i++)
+	// I have to cast to an integer because board.size() is by default unsigned, meaning i can't
+	// Actually compare it to -1 (atleast, not meaningfully)
+	for (int i = -1; i < (int)this->board.size(); i++)
 	{
-		for (int j = -1; j < this->board[i].size(); j++)
+		// I use the index 0 because otherwise it would try to find the 
+		// negative first index and crash.
+		for (int j = -1; j < (int)this->board[0].size(); j++)
 		{
 			if (i == -1 && j == -1)
 			{
-				theBoard += "  ";
+				theBoard += " ";
 			}
 			else if (i == -1)
 			{
-				theBoard += i + " ";
+				theBoard += j < 10 ? '0' + j : 'A' + (j - 10);// +" ";
 			}
 			else if (j == -1)
 			{
-				theBoard += j + " ";
+				theBoard += i < 10 ? '0' + i : 'A' + (i - 10);// +" ";
 			}
 			else
 			{
